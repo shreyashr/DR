@@ -4,13 +4,15 @@ The code represents a server and client model, where the server is a virtual pow
 
 First run the server code, on one terminal by creating an executable using the following command,
 
-gcc -o batteryserver batteryserver.c 
-./batteryserver
+a)gcc -o batteryserver batteryserver.c 
+
+b)./batteryserver
 
 Now in another terminal create the executable for the client and run it,
 
-gcc -o batteryclient batteryclient.c 
-./batteryclient
+c)gcc -o batteryclient batteryclient.c 
+
+d)./batteryclient
 
 Now repeat the same commands for the bucket by replacing the word "battery", by "bucket", in both server and client commands.
 
