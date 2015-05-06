@@ -1,0 +1,72 @@
+1) Name :          Shreyas Hasthantharam Ravindranath
+
+
+2) Student ID :    9740541370
+
+
+3) What i have done in the assignment:
+
+   The assignment deals with a health center server which can handle appointment reservation of patients.
+   The project was implemented on C language and compiled using the GCC compiler. I have implemented the logic and the coding part 
+   of the health center server, doctor 1, doctor 2 ,patient 1 and patient2. I have made use of string functions 
+   like strcmp(), strncmp(), strtok(), to manipulate all the data that has been read from the file using the fopen(), fgets() and fclose() functions. 
+   The data has been stored in various parts using different data structures. I have used array of structures, arrays and pointers 
+   to implement most of the requirements. The sending and receive functions are used to communicate between the server(health center, doctors) and patients.
+   
+   General steps used to implement the various codes:
+	
+	a) Included the required libraries
+	b) Declaration of global variables i have used, some are declared when found required
+	c) Read the credential or availabilities or the insurance files for the patient, health center server and doctor respectively
+	d) Create sockets, Bind and use them in case of TCP and Create and use in case of UDP
+	e) Send and Receive the required information exchange for proper functioning of the code
+	f) Print required information onto the screen
+	g) Close sockets and make the server and doctors as always listening servers by using infinite while loop
+
+   I have learnt the syntax and usage of most of these functions during the execution of the code. Hence the project as a whole made me lose my fear of programming and gave me a good foundtion.
+
+
+
+4) What the code files do:
+
+   healthcenterserver.c - The server responsible for the authentication and upon authentication, sends the required availability of slots and the doctor and port details which
+			  the patient needs to know to contact the doctor who handles the appointment chosen by the patient. The complete communication between the server and patients happen over 
+                          TCP sockets. The genral procedure of Handshake is used.
+
+
+   patient1.c & patient2.c -The patients that are contacting the seerver for appointments. The paptients upon authentication receives the port deatails and th doctor they should contact and uses a 
+			    UDP connection to establish this link with the doctors and obtains the cost of treatment/visit.
+   
+   doctor1.c & doctor2.c - All communication between the docotors and the patients are over UDP sockets. The doctors upon receiving the infromation from the patients asses the insurance 
+                           held by the patient and replies back with the cost.
+
+
+5) Steps to run the program:
+   
+
+   a) Execute the make file using make command (Note : a warning for implicit usage of bcopy appaears, please ignore and continue the execution).
+   b) First run the healthcenterserver followed by the doctor1 and doctor 2 using ./healthcenterserver, ./doctor1 and ./doctor2
+   c) Run the patient1 or patient2 using ./patient1 and ./patient2
+   d) Now run the next patient (NO NEED TO RUN THE SERVER OR DOCTORS AGAIN)
+
+NOTE: At any given time the server can handle only one patient, the other must be run only after the previous patient has finished its execution (i.e.,second patient can use only after 
+      first patient finishes Phase 1 and Phase 2 for healthcenterserver i.e., concurrent requests are not handled).
+      
+
+6) The format of messages exchanged:
+
+   All messages exchanged between the server, patients and doctors, patients are in the string format. If any integer values were to be exchanged, then sprintf() was used to convert 
+   them to strings. atoi() function is used where required to convert the strings to integer values (like port number of doctors obtained from server is string and to use them 
+   while connecting to doctor is used as integer) .
+
+
+7) Idiosyncracy of the project:
+
+   The project runs well in all cases. The single point of failure may be the length of the buffer in Phase 3 while obtaining the insurance details. Due to difficulties faced I had
+   to limit the buffer to exactly the count 11 ("ex : insurance1"), if this string length be increased the Phase 3 might fail.
+
+
+8) Reused Code: 
+
+   The code was completly developed from scratch. The only used functions are the standard library fuctions of both socket and general. Parts of the send , receive techniques and data handling 
+   mechanisms such as string functions are obtained from beej tutorials for socket programming and www.Learn-C.org. 
